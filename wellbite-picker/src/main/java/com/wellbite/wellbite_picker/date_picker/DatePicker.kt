@@ -17,13 +17,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.ScrollScope
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,8 +56,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -76,7 +72,7 @@ import kotlin.math.roundToInt
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DaterPicker(
+fun WellBiteDatePicker(
     modifier: Modifier,
     title: String = "DAY, MONTH & YEAR PICKER",
     doneLabel: String = "Done",
@@ -976,52 +972,3 @@ internal fun calculateAnimatedAlpha(
         0.2f
     }
 }
-
-
-/*** Preview Code  Starts here. ***/
-@RequiresApi(Build.VERSION_CODES.O)
-@Composable
-fun WheelMonthYearPickerDemo() {
-    var showSheet by remember { mutableStateOf(false) }
-    var selectedDate by remember { mutableStateOf("") }
-
-
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        DaterPicker(
-            modifier = Modifier.fillMaxWidth(),
-            titleStyle = TextStyle(
-                fontSize = 16.sp,
-                lineHeight = 18.sp,
-                fontWeight = FontWeight(600),
-                color = Color(0xFF333333),
-                textAlign = TextAlign.Center,
-            ),
-            doneLabelStyle = TextStyle(
-                fontSize = 16.sp,
-                lineHeight = 18.sp,
-                fontWeight = FontWeight(400),
-                textAlign = TextAlign.Center,
-                color = Color(0xFF007AFF),
-            ),
-            textColor = Color(0xFF000000),
-            selectorProperties = WheelPickerDefaults.selectorProperties(
-                color = Color.LightGray,
-            ),
-            rowCount = 5,
-            size = DpSize(128.dp, 160.dp),
-            onDoneClick = {
-                selectedDate = dateToString(it, "MMM, yyyy")
-
-            }
-        )
-    }
-}
-
-
-/*** Preview Code  Ends here. ***/
