@@ -6,7 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wellbite.wellbite_picker.weight_picker.WeightPicker
+import com.wellbite.wellbite_picker.weight_picker.WellBiteWeightPicker
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,8 +20,8 @@ class WeightPickerTest {
     @Test
     fun weightPicker_displaysInitialWeightCorrectly() {
         composeTestRule.setContent {
-            WeightPicker(
-                initialWeight = 120.5f,
+            WellBiteWeightPicker(
+
                 onWeightSelected = {}
             )
         }
@@ -37,8 +37,7 @@ class WeightPickerTest {
         var selectedWeight = 0f
 
         composeTestRule.setContent {
-            WeightPicker(
-                initialWeight = 110.5f,
+            WellBiteWeightPicker(
                 onWeightSelected = {
                     selectedWeight = it
                 }
