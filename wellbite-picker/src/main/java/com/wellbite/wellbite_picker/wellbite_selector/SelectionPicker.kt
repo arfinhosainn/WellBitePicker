@@ -1,15 +1,11 @@
 package com.wellbite.wellbite_picker.wellbite_selector
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,27 +28,17 @@ fun WellBiteSelectionPicker(
     onSelected: (String) -> Unit,
     onSelectedColor: Color = MaterialTheme.colorScheme.primaryContainer,
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .verticalScroll(rememberScrollState())
-        ) {
-            selections.forEach { item ->
-                DefaultSelectionItem(
-                    item = item,
-                    isSelected = selectedItem == item,
-                    onClick = { onSelected(item) },
-                    onSelectedColor = onSelectedColor
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-        }
+
+    selections.forEach { item ->
+        DefaultSelectionItem(
+            item = item,
+            isSelected = selectedItem == item,
+            onClick = { onSelected(item) },
+            onSelectedColor = onSelectedColor
+        )
+        Spacer(modifier = Modifier.height(16.dp))
     }
+
 }
 
 @Composable
