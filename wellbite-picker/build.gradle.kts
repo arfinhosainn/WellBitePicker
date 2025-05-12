@@ -61,6 +61,9 @@ dependencies {
     testImplementation (libs.robolectric)
     testImplementation(kotlin("test"))
 
+    implementation (libs.androidx.animation)
+
+
 }
 afterEvaluate {
     publishing {

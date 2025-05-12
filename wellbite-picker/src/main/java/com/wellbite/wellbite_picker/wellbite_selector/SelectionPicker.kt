@@ -31,14 +31,6 @@ fun WellBiteSelectionPicker(
     selectedItem: String,
     onSelected: (String) -> Unit,
     onSelectedColor: Color = MaterialTheme.colorScheme.primaryContainer,
-    selectionItemContent: @Composable (item: String, isSelected: Boolean, onClick: () -> Unit) -> Unit = { item, isSelected, onClick ->
-        DefaultSelectionItem(
-            item = item,
-            isSelected = isSelected,
-            onClick = onClick,
-            onSelectedColor = onSelectedColor
-        )
-    }
 ) {
     Column(
         modifier = modifier
@@ -54,7 +46,8 @@ fun WellBiteSelectionPicker(
                 DefaultSelectionItem(
                     item = item,
                     isSelected = selectedItem == item,
-                    onClick = { onSelected(item) }
+                    onClick = { onSelected(item) },
+                    onSelectedColor = onSelectedColor
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }
@@ -93,7 +86,3 @@ internal fun DefaultSelectionItem(
 }
 
 
-data class SelectionPickerConfig(
-    val defaultSelection: List<String> = listOf("Male", "Female", "Other"),
-    val maxCustomSelection: Int? = null,
-)
